@@ -1,2 +1,24 @@
-# VueJS-StockTrader-Tutorial
-Vuejs + Bootstrap Tutorial, begins with a starter template, follow the ReadMe.md instructions to build the full application
+# vuejs-stocktrader-tutorial
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
