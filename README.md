@@ -1,4 +1,4 @@
-# vuejs-stocktrader-tutorial
+# VueJS Stock Trader Final
 
 ## Project setup
 ```
