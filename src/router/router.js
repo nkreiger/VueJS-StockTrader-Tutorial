@@ -25,6 +25,28 @@ const Dashboard = resolve => {
     );
 };
 
+const Portfolio = resolve => {
+    require.ensure(
+        ["@/views/Portfolio/Portfolio.vue"],
+        () => {
+            resolve(require("@/views/Portfolio/Portfolio.vue"));
+        },
+        "portfolio"
+    );
+};
+
+const Trade = resolve => {
+    require.ensure(
+        ["@/views/Trade/Trade.vue"],
+        () => {
+            resolve(require("@/views/Trade/Trade.vue"));
+        },
+        "trading"
+    );
+};
+
+
+
 const routes = [
     {
         path: "/",
@@ -32,6 +54,22 @@ const routes = [
         components: {
             header: Navbar,
             content: Dashboard
+        }
+    },
+    {
+        path: "/portfolio",
+        name: "portfolio",
+        components: {
+            header: Navbar,
+            content: Portfolio
+        }
+    },
+    {
+        path: "/trade",
+        name: "trade",
+        components: {
+            header: Navbar,
+            content: Trade
         }
     },
     {

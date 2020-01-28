@@ -1,34 +1,48 @@
 <template>
     <div>
         <b-navbar toggleable="lg" type="light" variant="light">
-            <b-navbar-brand>
+            <b-navbar-brand to="/">
                 <icon-stockmrkt :max-width="brandMaxWidth"/>
-                <div style="font-size: 1.5rem; margin-left: 10px; display: inline-flex;">
-                    {{ title }}
-                </div>
             </b-navbar-brand>
+
+            <!-- funds -->
+            <div style="font-size: 1.5rem; margin-left: 10px; margin: auto;">
+                {{ content.funds.text }}: {{ amount | currency }}
+            </div>
+
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
             <!-- everything inside collapses on toggleable screen size specified -->
             <b-collapse id="nav-collapse" is-nav>
                 <!-- Right aligned nav items -->
                 <b-navbar-nav class="ml-auto">
+                    <b-nav-item>
+                        <router-link to="/" type="button" active-class="active" class="btn btn-outline-primary" exact>
+                            Home
+                        </router-link>
+                    </b-nav-item>
 
-                    <b-nav-item-dropdown text="Actions" right>
-                        <b-dropdown-item href="#">EN</b-dropdown-item>
-                        <b-dropdown-item href="#">ES</b-dropdown-item>
-                        <b-dropdown-item href="#">RU</b-dropdown-item>
-                        <b-dropdown-item href="#">FA</b-dropdown-item>
-                    </b-nav-item-dropdown>
+                    <b-nav-item>
+                        <router-link to="/portfolio" type="button" active-class="active" class="btn btn-outline-success"
+                                     exact>
+                            Portfolio
+                        </router-link>
+                    </b-nav-item>
 
-                    <b-nav-item-dropdown right>
-                        <!-- Using 'button-content' slot -->
-                        <template v-slot:button-content>
-                            <em>User</em>
-                        </template>
-                        <b-dropdown-item href="#">Profile</b-dropdown-item>
-                        <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-                    </b-nav-item-dropdown>
+                    <b-nav-item>
+                        <router-link to="/trade" type="button" active-class="active" class="btn btn-outline-danger"
+                                     exact>
+                            Trade
+                        </router-link>
+                    </b-nav-item>
+
+                    <b-nav-item>
+                        <b-dropdown variant="outline-dark" text="Actions" right>
+                            <b-dropdown-item v-for="(action, index) in content.actions" :key="index"
+                                             @click="handleActions(action.action)">{{ action.text }}
+                            </b-dropdown-item>
+                        </b-dropdown>
+                    </b-nav-item>
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
@@ -39,9 +53,38 @@
     export default {
         name: "navbar-basic",
         data: () => ({
-            title: 'Stock Trader',
-            brandMaxWidth: '3.5vw'
-        })
+            content: {
+                title: 'Stock Trader',
+                funds: {
+                    text: 'Funds'
+                },
+                actions: [
+                    {
+                        text: 'End Day',
+                        action: 'end'
+                    },
+                    {
+                        text: 'Save Data',
+                        action: 'save'
+                    },
+                    {
+                        text: 'Load Data',
+                        action: 'load'
+                    }
+                ]
+            },
+            brandMaxWidth: '75%'
+        }),
+        computed: {
+            amount() {
+                return this.$store.getters['portfolio/getFunds'];
+            }
+        },
+        methods: {
+            handleActions(action) {
+                this.$log.debug('perform: ' + action);
+            }
+        }
     }
 </script>
 

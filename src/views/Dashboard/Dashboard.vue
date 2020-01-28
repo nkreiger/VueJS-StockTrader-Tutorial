@@ -9,6 +9,9 @@
 
     export default {
         name: 'dashboard-view',
+        data: () => ({
+            test: 'hello world!!'
+        }),
         components: {
             appDashboard: dashboard
         }
