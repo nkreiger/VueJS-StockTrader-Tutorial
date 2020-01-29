@@ -26,7 +26,7 @@ const getters = {
 }
 
 const mutations = {
-    buyStock(state, { stockId, quantity, stockPrice }) {
+    buyStock(state, {stockId, quantity, stockPrice}) {
         // check if stock already exists
         const record = state.stocks.find(el => el.id === stockId)
 
@@ -41,12 +41,32 @@ const mutations = {
 
         // update funds
         state.funds -= (quantity * stockPrice);
+    },
+    sellStock(state, {stockId, quantity, stockPrice}) {
+        // check if stock exists
+        const record = state.stocks.find(el => el.id === stockId);
+
+        /* eslint-disable no-console */
+
+        // change stock state and add funds
+        let quantAdd;
+        let temp = record.quantity - quantity;
+
+        if (Math.sign(temp) === 1) {
+            quantAdd = quantity;
+            record.quantity -= quantity;
+        } else {
+            quantAdd = record.quantity;
+            state.stocks.splice(state.stocks.indexOf(record), 1);
+        }
+
+        // add funds
+        state.funds += stockPrice * quantAdd;
     }
 }
 
-const actions = {
 
-}
+const actions = {}
 
 export default {
     namespaced: true,

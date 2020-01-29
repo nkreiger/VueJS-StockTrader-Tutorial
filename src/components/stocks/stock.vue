@@ -24,6 +24,9 @@
 
                 // dispatch buy stock
                 this.$store.dispatch('stocks/buyStock', order);
+
+                // set defaults
+                this.setDefaults();
             },
             sellStock() {
                 // retrieve and log order
@@ -31,6 +34,10 @@
                 this.$log.debug('sell: ', this.stock.name, order);
 
                 // dispatch sell order
+                this.$store.dispatch('stocks/sellStock', order);
+
+                // set defaults
+                this.setDefaults();
             },
             getOrder() {
                 return {
@@ -38,6 +45,9 @@
                     stockPrice: parseInt(this.stock.price),
                     quantity: this.quantity
                 }
+            },
+            setDefaults() {
+                this.quantity = 0;
             }
         }
     }

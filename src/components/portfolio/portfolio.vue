@@ -1,6 +1,6 @@
 <template>
     <b-row class="text-center">
-        <b-col cols="4" v-for="(stock, index) in content.stocks" :key="index" style="margin-bottom: 20px">
+        <b-col cols="4" v-for="(stock, index) in stocks" :key="index" style="margin-bottom: 20px">
             <stock :border-style="content.borderStyle" :stock="stock">
                 <template v-slot:header>
                     <h6 class="mb-0">{{ stock.name }} (Price: {{ stock.price | currency }} Quantity: {{ stock.quantity }})</h6>
@@ -20,15 +20,18 @@
         name: "portfolio-main",
         data: () => ({
             content: {
-                stocks: [],
                 borderStyle: 'border-danger'
             }
         }),
+        computed: {
+            stocks() {
+                return this.$store.getters['portfolio/getStockPortfolio'];
+            }
+        },
         components: {
             stock
         },
         created() {
-            this.content.stocks = this.$store.getters['portfolio/getStockPortfolio'];
             this.$log.debug('Portfolio: ', this.stocks);
         }
     }

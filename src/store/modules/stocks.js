@@ -35,6 +35,15 @@ const actions = {
     buyStock({ commit }, payload) {
         // buy stock
         commit('portfolio/buyStock', payload, { root: true });
+    },
+    /**
+     *
+     * @param commit: state
+     * @param payload: stock { id: string, name: string, quantity: number }
+     */
+    sellStock({ commit }, payload) {
+        // buy stock
+        commit('portfolio/sellStock', payload, { root: true });
     }
 }
 
