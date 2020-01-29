@@ -83,6 +83,27 @@
         methods: {
             handleActions(action) {
                 this.$log.debug('perform: ' + action);
+                switch(action) {
+                    case 'end':
+                        this.end();
+                        break;
+                     case 'save':
+                         this.save();
+                         break;
+                     case 'load':
+                         this.load();
+                         break;
+                }
+            },
+            end() {
+                this.$store.dispatch('stocks/endDay');
+            },
+            save() {
+                let stockData = this.$store.getters['stocks/getStocks'];
+                this.$store.dispatch('portfolio/saveData', stockData);
+            },
+            load() {
+                this.$store.dispatch('portfolio/loadData');
             }
         }
     }

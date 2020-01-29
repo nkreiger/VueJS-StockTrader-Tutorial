@@ -16,6 +16,11 @@ const getters = {
 const mutations = {
     initStocks(state, payload) {
         state.stocks = payload;
+    },
+    randStocks(state) {
+        state.stocks.forEach((el) => {
+            el.price = Math.round(el.price * (1 + Math.random() - 0.5));
+        });
     }
 }
 
@@ -44,6 +49,13 @@ const actions = {
     sellStock({ commit }, payload) {
         // buy stock
         commit('portfolio/sellStock', payload, { root: true });
+    },
+    /**
+     *
+     * @param commit: state
+     */
+    endDay({ commit }) {
+        commit('randStocks');
     }
 }
 

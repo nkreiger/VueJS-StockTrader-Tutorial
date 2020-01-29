@@ -1,6 +1,11 @@
 const state = {
     funds: 10000,
-    stocks: []
+    stocks: [],
+    archive: {
+        stocks: [],
+        stockData: [],
+        funds: 10000
+    }
 }
 
 const getters = {
@@ -13,13 +18,18 @@ const getters = {
         return state.stocks.map(stock => {
             // get record of stock
             const record = rootGetters['stocks/getStocks'].find(el => el.id === stock.id);
-
+            /* eslint-disable no-console */
+            console.log('update stock portfolio');
             const currentStock = {
                 id: stock.id,
                 quantity: stock.quantity,
                 name: record.name,
-                price: record.price
+                price: (stock.price) ? stock.price : record.price,
+                record_price: record.price
             };
+            // clear stock price
+            if (stock.price) delete stock.price
+
             return currentStock;
         });
     }
@@ -46,8 +56,6 @@ const mutations = {
         // check if stock exists
         const record = state.stocks.find(el => el.id === stockId);
 
-        /* eslint-disable no-console */
-
         // change stock state and add funds
         let quantAdd;
         let temp = record.quantity - quantity;
@@ -62,11 +70,44 @@ const mutations = {
 
         // add funds
         state.funds += stockPrice * quantAdd;
+    },
+    archiveData(state, stockData) {
+        // clear current archive
+        state.archive.stocks = [];
+        state.archive.stockData = stockData;
+        state.stocks.forEach((stock) => {
+            // get record of stock
+            const record = stockData.find(el => el.id === stock.id);
+
+            // add to archive
+            state.archive.stocks.push({
+                arch_id: stock.id,
+                arch_quantity: stock.quantity,
+                arch_price: record.price
+            });
+        })
+    },
+    loadStocks(state, initial) {
+        state.stocks = initial;
+        state.archive.stocks.forEach((el) => {
+            state.stocks.push({
+                id: el.arch_id,
+                quantity: el.arch_quantity,
+                price: el.arch_price
+            })
+        })
     }
 }
 
 
-const actions = {}
+const actions = {
+    saveData({ commit }, payload) {
+        commit('archiveData', payload);
+    },
+    loadData({ commit }) {
+        commit('loadStocks', []);
+    }
+}
 
 export default {
     namespaced: true,
