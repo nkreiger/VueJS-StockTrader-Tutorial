@@ -6,7 +6,7 @@
 import VueRouter from 'vue-router';
 
 
-const Navbar = () => import('@/views/Navbar/Navbar.vue');
+//const Navbar = () => import('@/views/Navbar/Navbar.vue');
 
 
 const routes = [];

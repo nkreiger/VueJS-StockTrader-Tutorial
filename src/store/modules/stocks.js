@@ -1,4 +1,4 @@
-const initData = require('@/inputs/data');
+//const initData = require('@/inputs/data');
 
 const state = {
     stocks: []
