@@ -1,16 +1,16 @@
 <template>
     <b-container>
-        <app-stocks/>
+        <h1>Trade</h1>
     </b-container>
 </template>
 
 <script>
-    import stocks from '@/components/stocks/stocks.vue';
+    import trade from '@/components/trade/trade.vue';
 
     export default {
         name: "trade",
         components: {
-            appStocks: stocks
+            appTrade: trade
         }
     }
 </script>

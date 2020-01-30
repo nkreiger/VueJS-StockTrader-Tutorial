@@ -2,16 +2,16 @@
     <div>
         <b-navbar toggleable="lg" type="light" variant="light">
             <b-navbar-brand to="/">
-                <icon-stockmrkt :max-width="brandMaxWidth"/>
+                <!-- load up icon -->
             </b-navbar-brand>
 
             <!-- funds -->
-            <div style="font-size: 1.5rem; margin-left: 10px; margin: auto;">
-                {{ content.funds.text }}: {{ amount | currency }}
+            <div style="font-size: 1.5rem;">
+                <!-- display fund text and amount -->
             </div>
 
 
-            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+            <b-navbar-toggle target="nav-collapse"/>
             <!-- everything inside collapses on toggleable screen size specified -->
             <b-collapse id="nav-collapse" is-nav>
                 <!-- Right aligned nav items -->
@@ -23,23 +23,9 @@
                     </b-nav-item>
 
                     <b-nav-item>
-                        <router-link to="/portfolio" type="button" active-class="active" class="btn btn-outline-success"
-                                     exact>
-                            Portfolio
-                        </router-link>
-                    </b-nav-item>
-
-                    <b-nav-item>
-                        <router-link to="/trade" type="button" active-class="active" class="btn btn-outline-danger"
-                                     exact>
-                            Trade
-                        </router-link>
-                    </b-nav-item>
-
-                    <b-nav-item>
                         <b-dropdown variant="outline-dark" text="Actions" right>
-                            <b-dropdown-item v-for="(action, index) in content.actions" :key="index"
-                                             @click="handleActions(action.action)">{{ action.text }}
+                            <b-dropdown-item @click="handleActions('save')">
+                                Save
                             </b-dropdown-item>
                         </b-dropdown>
                     </b-nav-item>
@@ -58,6 +44,23 @@
                 funds: {
                     text: 'Funds'
                 },
+                links: [
+                    {
+                        text: 'Home',
+                        to: '/',
+                        style: 'btn btn-outline-primary'
+                    },
+                    {
+                        text: 'Trade',
+                        to: '/trade',
+                        style: 'btn btn-outline-danger'
+                    },
+                    {
+                        text: 'Portfolio',
+                        to: '/portfolio',
+                        style: 'btn btn-outline-primary'
+                    }
+                ],
                 actions: [
                     {
                         text: 'End Day',
@@ -77,7 +80,8 @@
         }),
         computed: {
             amount() {
-                return this.$store.getters['portfolio/getFunds'];
+                //return this.$store.getters['portfolio/getFunds'];
+                return 1
             }
         },
         methods: {
@@ -96,19 +100,15 @@
                 }
             },
             end() {
-                this.$store.dispatch('stocks/endDay');
+                // dispatch stocks/endDay
             },
             save() {
-                let stockData = this.$store.getters['stocks/getStocks'];
-                this.$store.dispatch('portfolio/saveData', stockData);
+                // get stocks/getStocks
+                // dispatch portfolio/saveData
             },
             load() {
-                this.$store.dispatch('portfolio/loadData');
+                // dispatch loadData
             }
         }
     }
 </script>
-
-<style scoped>
-
-</style>

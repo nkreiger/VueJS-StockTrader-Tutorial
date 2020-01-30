@@ -1,6 +1,6 @@
 <template>
     <b-container>
-        <app-portfolio/>
+        <h1>Portfolio</h1>
     </b-container>
 </template>
 

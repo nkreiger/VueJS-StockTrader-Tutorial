@@ -1,6 +1,6 @@
 <template>
     <b-container fluid>
-        <app-dashboard/>
+        <h1>Dashboard</h1>
     </b-container>
 </template>
 

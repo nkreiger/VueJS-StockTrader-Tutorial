@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import stock from '@/components/stocks/stock.vue';
+    import stock from '@/components/features/stock.vue';
 
     export default {
         name: "portfolio-main",
