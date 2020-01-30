@@ -17,7 +17,7 @@
 </template>
 
 <script>
-    import stock from '@/components/features/stock.vue';
+    import stock from '@/features/stocks/stock.vue';
 
     export default {
         name: "stocks",

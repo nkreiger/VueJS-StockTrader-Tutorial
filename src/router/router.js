@@ -1,6 +1,7 @@
 /**
  * Initialize Routes
  * Lazy Loading Optimizes Performance
+ * Asynchronous I/O is a form of input/output processing that permits other processing to continue before the transmission has finished.
  */
 
 import VueRouter from 'vue-router';
@@ -8,7 +9,8 @@ import VueRouter from 'vue-router';
 
 
 
-const routes = [];
+const routes = [
+];
 
 /*
 const Portfolio = () => import('@/views/Portfolio/Portfolio.vue');
