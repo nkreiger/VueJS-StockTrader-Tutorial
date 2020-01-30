@@ -4,6 +4,7 @@ import Vue from 'vue';
 import IconStockMrkt from '@/global/custom/icon-stockmrkt.vue';
 
 
+/*
 // establish gobal components
 Vue.component('icon-stockmrkt', IconStockMrkt);
 
@@ -11,3 +12,4 @@ Vue.component('icon-stockmrkt', IconStockMrkt);
 Vue.filter("currency", value => {
     return "$" + value.toLocaleString();
 });
+ */

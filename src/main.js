@@ -34,7 +34,6 @@ const options = {
 
 // enabkle services
 Vue.use(VueRouter);
-
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(VueLogger, options);
