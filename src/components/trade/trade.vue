@@ -1,12 +1,15 @@
 <template>
     <b-row class="text-center">
-        <b-col cols="4" v-for="(stock, index) in content.stocks" :key="index" style="margin-bottom: 20px">
-            <stock :border-style="content.borderStyle" :stock="stock">
+        <b-col cols="4">
+            <!-- props border-style and stock -->
+            <stock>
                 <template v-slot:header>
-                    <h6 class="mb-0">{{ stock.name }} (Price: {{ stock.price | currency }})</h6>
+                    <!-- stock name and price -->
+                    <!-- <h6 class="mb-0">John Smith</h6> -->
                 </template>
                 <template v-slot:selection="{ buy }">
-                    <b-button variant="success" style="float: left;" @click="buy">Buy</b-button>
+                    <!-- add success buy button @click="buy" -->
+                    <!--<b-button>Click</b-button> -->
                 </template>
             </stock>
         </b-col>
@@ -22,6 +25,9 @@
             content: {
                 stocks: [],
                 borderStyle: 'border-success'
+            },
+            init: {
+
             }
         }),
         components: {
@@ -29,7 +35,7 @@
         },
         created() {
             // load trade-able stocks
-            this.content.stocks = this.$store.getters['stocks/getStocks'];
+            // assign content.stocks to stocks/getStocks
         }
     }
 </script>

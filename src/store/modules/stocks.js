@@ -15,6 +15,7 @@ const mutations = {
         state.stocks = payload;
     },
     randStocks(state) {
+        // point out why the state changes
         state.stocks.forEach((el) => {
             el.price = Math.round(el.price * (1 + Math.random() - 0.5));
         });
@@ -26,18 +27,17 @@ const actions = {
      * Assigns state to initial stocks loaded from data.json file
      * @param commit: state
      */
-    initStocks({ commit }) {
-        commit('initStocks', initData);
-    },
+
+    //TODO: Write INIT Stocks
+
     /**
      *
      * @param commit: state
      * @param payload: stock { id: string, name: string, quantity: number }
      */
-    buyStock({ commit }, payload) {
-        // buy stock
-        commit('portfolio/buyStock', payload, { root: true });
-    },
+
+    //TODO: Write BuyStocks
+
     /**
      *
      * @param commit: state
@@ -63,3 +63,7 @@ export default {
     actions,
     getters
 }
+
+
+// write init stocks
+// write buy stocks

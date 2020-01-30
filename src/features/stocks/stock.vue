@@ -1,11 +1,16 @@
 <template>
     <b-card header-tag="header" footer-tag="footer" :class="borderStyle">
         <template v-slot:header>
-            <slot name="header" />
+            <slot name="header">
+                <h6 class="mb-0">Default Header</h6>
+            </slot>
         </template>
-        <b-form-input type="number" placeholder="0" v-model.number="quantity"/>
+        <!-- 2 way bind.number quantity -->
+        <b-form-input type="number" placeholder="0"/>
         <br>
-        <slot name="selection" :buy="buyStock" :sell="sellStock"/>
+        <slot name="selection" :buy="buyStock" :sell="sellStock">
+            <b-button>Default Button</b-button>
+        </slot>
     </b-card>
 </template>
 
@@ -22,8 +27,7 @@
                 const order = this.getOrder();
                 this.$log.debug('buy: ', this.stock.name, order);
 
-                // dispatch buy stock
-                this.$store.dispatch('stocks/buyStock', order);
+                // dispatch stocks/buyStock
 
                 // set defaults
                 this.setDefaults();
@@ -33,8 +37,7 @@
                 const order = this.getOrder();
                 this.$log.debug('sell: ', this.stock.name, order);
 
-                // dispatch sell order
-                this.$store.dispatch('stocks/sellStock', order);
+                // dispatch stocks/sellStock
 
                 // set defaults
                 this.setDefaults();
@@ -52,7 +55,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

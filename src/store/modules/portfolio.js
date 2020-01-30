@@ -13,13 +13,13 @@ const getters = {
         return state.funds;
     },
     // must import everything for rootGetters to work
+    /*
     getStockPortfolio(state, getters, rootState, rootGetters) {
         // map through stocks and alter them into portfolio form
         return state.stocks.map(stock => {
             // get record of stock
             const record = rootGetters['stocks/getStocks'].find(el => el.id === stock.id);
-            /* eslint-disable no-console */
-            console.log('update stock portfolio');
+
             const currentStock = {
                 id: stock.id,
                 quantity: stock.quantity,
@@ -32,10 +32,11 @@ const getters = {
 
             return currentStock;
         });
-    }
+    } */
 }
 
 const mutations = {
+    /*
     buyStock(state, {stockId, quantity, stockPrice}) {
         // check if stock already exists
         const record = state.stocks.find(el => el.id === stockId)
@@ -51,7 +52,8 @@ const mutations = {
 
         // update funds
         state.funds -= (quantity * stockPrice);
-    },
+    }, */
+
     sellStock(state, {stockId, quantity, stockPrice}) {
         // check if stock exists
         const record = state.stocks.find(el => el.id === stockId);
@@ -101,12 +103,14 @@ const mutations = {
 
 
 const actions = {
+    /*
     saveData({ commit }, payload) {
         commit('archiveData', payload);
     },
     loadData({ commit }) {
         commit('loadStocks', []);
     }
+     */
 }
 
 export default {
