@@ -6,11 +6,9 @@
     <!-- content -->
     <div class="main-content">
       <transition name="fade" mode="out-in">
-        <router-view name="content"/>
+
       </transition>
     </div>
-    <!-- footer -->
-
   </div>
 </template>
 
