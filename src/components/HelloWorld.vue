@@ -2,41 +2,10 @@
     <b-container class="text-center">
         <b-row>
             <b-col>
-                <input type="text" v-model="firstName" :placeholder="hint"/>
+                <h1>Hello</h1>
             </b-col>
             <b-col>
-                <input type="text" v-model="lastName" :placeholder="hint"/>
-            </b-col>
-        </b-row>
-        <b-row>
-            <b-col>
-                <h1>{{ firstName }}</h1>
-            </b-col>
-            <b-col>
-                <h1>{{ lastName }}</h1>
-            </b-col>
-        </b-row>
-        <b-row>
-            <b-col>
-                <h1> {{ fullName }}</h1>
-            </b-col>
-        </b-row>
-        <b-row v-for="(item, index) in items" :key="index">
-            <b-col>
-                <b-btn @click="show = !show">TOGGLE #{{ index }}</b-btn>
-            </b-col>
-            <b-col>
-                <h1 v-if="show">The Number is {{ item }}</h1>
-                <h1 v-else>Good bye {{ item }}</h1>
-            </b-col>
-        </b-row>
-        <b-row v-for="(item, index) in balls" :key="index">
-            <b-col>
-                <b-btn @click="item.show = !item.show">TOGGLE #{{ index }}</b-btn>
-            </b-col>
-            <b-col>
-                <h1 v-if="item.show">The Number is {{ item }}</h1>
-                <h1 v-else>Good bye {{ item }}</h1>
+                <h1>There</h1>
             </b-col>
         </b-row>
     </b-container>
