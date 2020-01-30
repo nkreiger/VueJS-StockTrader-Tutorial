@@ -22,7 +22,6 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 // create logging
 Vue.config.productionTip = isProduction
-
 const options = {
     isEnabled: true,
     logLevel: isProduction ? 'error' : 'debug',
@@ -33,11 +32,12 @@ const options = {
     showConsoleColors: true
 };
 
-// enable services
+// enabkle services
 Vue.use(VueRouter);
-Vue.use(VueLogger(options));
+
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
+Vue.use(VueLogger, options);
 
 // create and mount vue spa app on index.html
 new Vue({
