@@ -24,7 +24,7 @@ const options = {
   showConsoleColors: true
 };
 
-// enabkle services
+// enable services
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(VueLogger, options);
