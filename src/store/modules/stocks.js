@@ -7,9 +7,6 @@ const state = {
 const getters = {
     getStocks(state) {
         return state.stocks;
-    },
-    test() {
-        return 'success';
     }
 }
 

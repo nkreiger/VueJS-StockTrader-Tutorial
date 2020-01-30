@@ -1,8 +1,8 @@
 <!--suppress ALL -->
 <template>
   <div id="app">
-    <!-- navbar -->
-    <router-view name="header"/>
+    <!-- header -->
+
     <!-- content -->
     <div class="main-content">
       <transition name="fade" mode="out-in">
@@ -10,7 +10,7 @@
       </transition>
     </div>
     <!-- footer -->
-    <router-view name="footer"/>
+
   </div>
 </template>
 
@@ -19,7 +19,7 @@
 export default {
   name: 'app',
   created() {
-    this.$store.dispatch('stocks/initStocks');
+    // dispatch initialize stocks/initStocks
     this.$log.debug('Initial Stocks: ', this.$store.getters['stocks/getStocks']);
   }
 }
